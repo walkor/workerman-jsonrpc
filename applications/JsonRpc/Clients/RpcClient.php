@@ -1,5 +1,5 @@
 <?php
-if(class_exists('JsonProtocol'))create_JsonProtocol();
+if(!class_exists('JsonProtocol'))create_JsonProtocol();
 /**
  * 
  *  RpcClient Rpc客户端
