@@ -17,7 +17,7 @@ class JsonRpcWorker extends Man\Core\SocketWorker
      * 统计数据上报的地址
      * @var string
      */
-    protected $statisticAddress = 'udp://127.0.0.1:44646';
+    protected $statisticAddress = 'udp://127.0.0.1:33636';
     
     /**
      * 启动的时候初始化统计上报地址)
