@@ -1,6 +1,5 @@
 <?php
-define('ST_ROOT', realpath(__DIR__.'/../'));
-require_once ST_ROOT . '/Web/_init.php';
+require_once  __DIR__.'/_init.php';
 
 $func = isset($_GET['fn']) ? $_GET['fn'] : 'main';
 $func = "\\Statistics\\Modules\\".$func;
