@@ -1,7 +1,7 @@
 <?php
-require_once WORKERMAN_ROOT_DIR . 'man/Core/SocketWorker.php';
-require_once WORKERMAN_ROOT_DIR . 'applications/JsonRpc/Protocols/JsonProtocol.php';
-require_once WORKERMAN_ROOT_DIR . 'applications/JsonRpc/Clients/StatisticClient.php';
+define('ROOT_DIR', realpath(__DIR__.'/../'));
+require_once ROOT_DIR . '/Protocols/JsonProtocol.php';
+require_once ROOT_DIR . '/Clients/StatisticClient.php';
 
 /**
  * 
