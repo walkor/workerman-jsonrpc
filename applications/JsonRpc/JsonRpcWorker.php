@@ -70,7 +70,7 @@ class JsonRpcWorker extends Man\Core\SocketWorker
         // 判断类对应文件是否载入
         if(!class_exists($class))
         {
-            $include_file = WORKERMAN_ROOT_DIR . "applications/JsonRpc/Services/$class.php";
+            $include_file = ROOT_DIR . "/Services/$class.php";
             if(is_file($include_file))
             {
                 require_once $include_file;
