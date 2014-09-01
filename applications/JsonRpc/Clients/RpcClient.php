@@ -199,6 +199,7 @@ class RpcClient
         {
             throw new Exception("can not connect to $address , $err_no:$err_msg");
         }
+        stream_set_blocking($this->connection, true);
         stream_set_timeout($this->connection, self::TIME_OUT);
     }
     
