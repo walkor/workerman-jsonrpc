@@ -7,6 +7,7 @@ class User
 {
    public static function getInfoByUid($uid)
    {
+
        return array(
                'uid'    => $uid,
                'name'=> 'test',
