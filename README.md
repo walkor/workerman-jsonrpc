@@ -149,10 +149,7 @@ class User
 配置
 ========
 
- * 配置文件在workerman/conf/目录下  
- * 其中workerman/conf/workerman.conf是workerman的主体配置文件，在里面可以设置运行模式、日志目录、pid文件存储位置等配置  
- * workerman/conf/conf.d/下每个配置文件对应一个网络应用，同时也对应workerman\workers下的一组worker进程。
- * 以Rpc网络服务应用的配置文件workerman/conf/conf.d/JsonRpcWorker.conf为例
+ * 配置文件在applications/conf.d/JsonRpcWorker.conf 
 
 ```
 ;Rpc网络服务应用配置
@@ -170,47 +167,6 @@ user=www-data
 preread_length=84000
 ```
 
-telnet远程控制及监控
-====================
-
-###workerman通过workerman/workers/Monitor.php提供telnet远程控制及监控功能
-<pre>
-输入
-telnet xxx.xxx.xxx.xxx 2001
-输入
-status
-展示workerman状态
-status
----------------------------------------GLOBAL STATUS--------------------------------------------
-WorkerMan version:2.0.1
-start time:2013-12-26 22:12:48   run 0 days 0 hours
-load average: 0, 0, 0
-1 users          4 workers       15 processes
-worker_name    exit_status     exit_count
-FileMonitor    0                0
-Monitor        0                0
-JsonRpcWorker      0                0
-WorkerManAdmin 0                0
----------------------------------------PROCESS STATUS-------------------------------------------
-pid     memory      listening        timestamp  worker_name    total_request packet_err thunder_herd client_close send_fail throw_exception suc/total
-24139   1.25M   tcp://0.0.0.0:2015   1388067168 JsonRpcWorker      0              0          0            0            0         0               100%
-24140   1.25M   tcp://0.0.0.0:2015   1388067168 JsonRpcWorker      0              0          0            0            0         0               100%
-24141   1.25M   tcp://0.0.0.0:2015   1388067168 JsonRpcWorker      0              0          0            0            0         0               100%
-24142   1.25M   tcp://0.0.0.0:2015   1388067168 JsonRpcWorker      0              0          0            0            0         0               100%
-24143   1.25M   tcp://0.0.0.0:2015   1388067168 JsonRpcWorker      0              0          0            0            0         0               100%
-24144   1.25M   tcp://0.0.0.0:2015   1388067168 JsonRpcWorker      0              0          0            0            0         0               100%
-24145   1.25M   tcp://0.0.0.0:2015   1388067168 JsonRpcWorker      0              0          0            0            0         0               100%
-24146   1.25M   tcp://0.0.0.0:2015   1388067168 JsonRpcWorker      0              0          0            0            0         0               100%
-24147   1.25M   tcp://0.0.0.0:2015   1388067168 JsonRpcWorker      0              0          0            0            0         0               100%
-24148   1.25M   tcp://0.0.0.0:2015   1388067168 JsonRpcWorker      0              0          0            0            0         0               100%
-24149   1.25M   tcp://0.0.0.0:2015   1388067168 JsonRpcWorker      0              0          0            0            0         0               100%
-24150   1.25M   tcp://0.0.0.0:2015   1388067168 JsonRpcWorker      0              0          0            0            0         0               100%
-24151   1.25M   tcp://0.0.0.0:3000   1388067168 WorkerManAdmin 0              0          0            0            0         0               100%
-</pre>
-
-###telnet支持的命令
- * status
- * stop
- * reload
- * kill pid
- * quit
+rpc监控
+======
+rpc监控页面地址 http://ip:33737
