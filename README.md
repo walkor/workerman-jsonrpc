@@ -33,29 +33,24 @@ workerman不能运行在Window平台
 强烈建议安装libevent扩展，以便支持更高的并发量  
 `sudo pecl install libevent`
 
-建议安装proctitle扩展(php5.5及以上版本原生支持，无需安装)，以便方便查看进程信息  
-`sudo pecl install proctitle`
-
 
 启动停止
 =========
 
-以ubuntu为例
-
 启动  
-`sudo ./bin/workermand start`
+`php start.php start`
 
 重启启动  
-`sudo ./bin/workermand restart`
+`php start.php restart`
 
 平滑重启/重新加载配置  
-`sudo ./bin/workermand reload`
+`php start.php reload`
 
 查看服务状态  
-`sudo ./bin/workermand status`
+`php start.php status`
 
 停止  
-`sudo ./bin/workermand stop`
+`php start.php stop`
 
 Rpc应用使用方法
 =========
@@ -118,14 +113,14 @@ $ret_async2 = $user_client->arecv_getInfoByUid($uid);
 ```
 
 ###服务端：  
-服务端每个类提供一组服务，类文件默认放在workerman/applications/JsonRpc/Services目录下。  
+服务端每个类提供一组服务，类文件默认放在Applications/JsonRpc/Services目录下。  
 客户端实际上是远程调用这些类的静态方法。
 例如：
 ```php
 <?php
 RpcClient::instance('User')->getInfoByUid($uid);
 ```
-调用的是workerman/applications/JsonRpc/Services/User.php 中 User类的getInfoByUid方法。    
+调用的是Applications/JsonRpc/Services/User.php 中 User类的getInfoByUid方法。    
 User.php文件类似这样
 ```php
 <?php
@@ -145,27 +140,6 @@ class User
 
 如果你想要增加一组服务，可以在这个目录下增加类文件即可。
 
-
-配置
-========
-
- * 配置文件在applications/conf.d/JsonRpcWorker.conf 
-
-```
-;Rpc网络服务应用配置
-;所用的传输层协议及绑定的ip端口
-listen = tcp://0.0.0.0:2015
-;长连接还是短连接，Rpc服务这里设置成短连接，每次请求后服务器主动断开
-persistent_connection = 0
-;启动多少worker进程，这里建议设置成cpu核数的整数倍，例如 CPU数*3
-start_workers=12
-;接收多少请求后退出该进程，重新启动一个新进程，设置成0代表永不重启
-max_requests=1000
-;以哪个用户运行该worker进程，建议使用权限较低的用户运行worker进程，例如www-data
-user=www-data
-;socket有数据可读的时候预读长度，一般设置为应用层协议包头的长度，这里设置成尽可能读取更多的数据
-preread_length=84000
-```
 
 rpc监控
 ======
