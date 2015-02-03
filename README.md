@@ -38,7 +38,7 @@ workerman不能运行在Window平台
 =========
 
 启动  
-`php start.php start`
+`php start.php start -d`
 
 重启启动  
 `php start.php restart`
@@ -141,6 +141,7 @@ class User
 如果你想要增加一组服务，可以在这个目录下增加类文件即可。
 
 
-rpc监控
+rpc监控页面
 ======
 rpc监控页面地址 http://ip:55757
+
