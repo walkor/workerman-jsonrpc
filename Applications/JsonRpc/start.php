@@ -3,9 +3,14 @@ use Workerman\Worker;
 require_once __DIR__ . '/Protocols/JsonNL.php';
 require_once __DIR__ . '/Clients/StatisticClient.php';
 
+// 开启的端口
 $worker = new Worker('JsonNL://0.0.0.0:2015');
+// 启动多少服务进程
 $worker->count = 16;
+// worker名称，php start.php status 时展示使用
 $worker->name = 'JsonRpc';
+
+
 $worker->onMessage = function($connection, $data)
 {
     $statistic_address = 'udp://127.0.0.1:55656';
