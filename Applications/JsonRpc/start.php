@@ -1,6 +1,8 @@
 <?php
 use Workerman\Worker;
-require_once __DIR__ . '/Protocols/JsonNL.php';
+
+// 自动加载类
+require_once __DIR__ . '/../../Workerman/Autoloader.php';
 require_once __DIR__ . '/Clients/StatisticClient.php';
 
 // 开启的端口
@@ -65,4 +67,8 @@ $worker->onMessage = function($connection, $data)
 };
 
 
-
+// 如果不是在根目录启动，则运行runAll方法
+if(!defined('GLOBAL_START'))
+{
+    Worker::runAll();
+}
