@@ -183,7 +183,11 @@ class RpcClient
                 'method'         => $method,
                 'param_array'  => $arguments,
                 ));
-        return fwrite($this->connection, $bin_data) == strlen($bin_data);
+        if(fwrite($this->connection, $bin_data) !== strlen($bin_data)）
+        {
+            throw new \Exception('Can not send data');
+        }
+        return true;
     }
     
     /**
