@@ -53,7 +53,7 @@ class RpcClient
      * 发送数据和接收数据的超时时间  单位S
      * @var integer
      */
-    const TIME_OUT = 1;
+    const TIME_OUT = 5;
     
     /**
      * 异步调用发送数据前缀
