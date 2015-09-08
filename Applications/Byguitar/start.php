@@ -15,14 +15,19 @@ use Workerman\Worker;
 
 // 自动加载类
 require_once __DIR__ . '/../../Workerman/Autoloader.php';
-require_once __DIR__ . '/Clients/StatisticClient.php';
+// require_once __DIR__ . '/Clients/StatisticClient.php';
+
+#自动加载项目的引入的库
+define('ROOT_PATH', __DIR__.DIRECTORY_SEPARATOR);
+include_once ROOT_PATH . 'Vendor/Bootstrap/Autoloader.php';
+\Bootstrap\Autoloader::instance()->addRoot(ROOT_PATH.'Vendor')->init();
 
 // 开启的端口
-$worker = new Worker('JsonNL://0.0.0.0:2015');
+$worker = new Worker('JsonNL://0.0.0.0:2016');
 // 启动多少服务进程
-$worker->count = 16;
+$worker->count = 2;
 // worker名称，php start.php status 时展示使用
-$worker->name = 'JsonRpc';
+$worker->name = 'Byguitar';
 
 
 $worker->onMessage = function($connection, $data)

@@ -20,7 +20,7 @@ require_once __DIR__ . '/Clients/StatisticClient.php';
 // 开启的端口
 $worker = new Worker('JsonNL://0.0.0.0:2015');
 // 启动多少服务进程
-$worker->count = 16;
+$worker->count = 2;
 // worker名称，php start.php status 时展示使用
 $worker->name = 'JsonRpc';
 
