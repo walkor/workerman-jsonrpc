@@ -3,8 +3,8 @@ namespace Config;
 
 class Redis{
 
-    public $fav = array('nodes' => array(
-                array('master' => "192.168.25.9:6379", 'slave' => "192.168.25.9:6379"),
+    public $default = array('nodes' => array(
+                array('master' => "172.16.91.130:6379", 'slave' => "172.16.91.130:6379"),
             ),
 
             'db' => 2

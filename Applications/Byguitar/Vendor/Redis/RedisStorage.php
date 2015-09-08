@@ -65,7 +65,7 @@ class RedisStorage extends RedisBase {
         }
 
         if (!static::$configs) {
-            static::$configs = new \Config\Redis();
+            static::$configs = (array) new \Config\Redis();
         }
 
         if (!self::$instance[$name]->config) {

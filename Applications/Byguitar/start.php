@@ -20,7 +20,7 @@ require_once __DIR__ . '/../../Workerman/Autoloader.php';
 #自动加载项目的引入的库
 define('ROOT_PATH', __DIR__.DIRECTORY_SEPARATOR);
 include_once ROOT_PATH . 'Vendor/Bootstrap/Autoloader.php';
-\Bootstrap\Autoloader::instance()->addRoot(ROOT_PATH.'Vendor')->init();
+\Bootstrap\Autoloader::instance()->addRoot(ROOT_PATH)->init();
 
 // 开启的端口
 $worker = new Worker('JsonNL://0.0.0.0:2016');

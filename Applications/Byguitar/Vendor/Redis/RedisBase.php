@@ -73,8 +73,8 @@ abstract class RedisBase {
 
         $exCaller = $this::getExternalCaller();
         // 需先初始化MNLogger
-        $logger = TraceLogger::instance('trace');
-        $logger->REDIS_CS($this->target, $exCaller['class'] . '::' . $exCaller['method'], serialize($arguments));
+        //$logger = TraceLogger::instance('trace');
+        //$logger->REDIS_CS($this->target, $exCaller['class'] . '::' . $exCaller['method'], serialize($arguments));
         try {
             $ret = call_user_func_array(array($obj, $name), $arguments);
         } catch (Exception $ex) {
@@ -82,12 +82,12 @@ abstract class RedisBase {
                 $obj->release();
             }
             throw new Exception('Redis operation error. node: '.$arguments[0].' details: '.$ex->getMessage(), 32001, $ex);
-            $logger->REDIS_CR("EXCEPTION",strlen(serialize($ret)));
+            //$logger->REDIS_CR("EXCEPTION",strlen(serialize($ret)));
         }
         if ($this->usePool) {
             $obj->release();
         }
-        $logger->REDIS_CR("SUCCESS", strlen(serialize($ret)));
+        //$logger->REDIS_CR("SUCCESS", strlen(serialize($ret)));
 
         return $ret;
     }
@@ -123,30 +123,30 @@ abstract class RedisBase {
     public function real_connect($target, $key) {
         if (!isset($this->redis[$target])) {//每个物理机对应一个new redis
             try {
-                $logger = TraceLogger::instance('trace');
+                //$logger = TraceLogger::instance('trace');
                 if ($this->usePool) {
                     $this->redis[$target] = new \redis_connect_pool();
                 } else {
                     $this->redis[$target] = new \Redis();
                 }
                 $ip_port = explode(":", $target);
-                $logger->REDIS_CS($ip_port[0] . ':' . $ip_port[1], get_class($this->redis[$target]) . '::connect', '');
+                //$logger->REDIS_CS($ip_port[0] . ':' . $ip_port[1], get_class($this->redis[$target]) . '::connect', '');
                 $this->redis[$target]->connect($ip_port[0], $ip_port[1], 10);
-                $logger->REDIS_CR('success', 0);
+                //$logger->REDIS_CR('success', 0);
                 if (isset($this->config['db'])) {//如果设置了db
                     $this->redis[$target]->select($this->config['db']);
                 }
             } catch (Exception $e) {
-                $logger->REDIS_CR('exception', 0);
+                //$logger->REDIS_CR('exception', 0);
                 if (strstr($e->getMessage(), "connect to pool_server fail")) {//端口连不上
                     $this->redis[$target] = new \Redis();
                     $ip_port = explode(":", $target);
-                    $logger->REDIS_CS($ip_port[0] . ':' . $ip_port[1], get_class($this->redis[$target]) . '::connect', '');
+                    //$logger->REDIS_CS($ip_port[0] . ':' . $ip_port[1], get_class($this->redis[$target]) . '::connect', '');
                     $success = $this->redis[$target]->connect($ip_port[0], $ip_port[1], 10);
                     if ($success === true) {
-                        $logger->REDIS_CR('success', 0);
+                        //$logger->REDIS_CR('success', 0);
                     } else {
-                        $logger->REDIS_CR('exception', 0);
+                        //$logger->REDIS_CR('exception', 0);
                     }
                     if (isset($this->config['db'])) {//如果设置了db
                         $this->redis[$target]->select($this->config['db']);
