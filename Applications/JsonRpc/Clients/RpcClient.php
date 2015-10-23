@@ -163,7 +163,7 @@ class RpcClient
             {
                 throw new Exception($this->serviceName . "->arecv_$real_method(".implode(',', $arguments).") have not been called");
             }
-            return self::$asyncInstances[$instance_key]->recvData($real_method, $arguments);
+            return self::$asyncInstances[$instance_key]->recvData();
         }
         // 同步发送接收
         $this->sendData($method, $arguments);
