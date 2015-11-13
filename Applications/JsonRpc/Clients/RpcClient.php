@@ -161,7 +161,7 @@ class RpcClient
             $instance_key = $real_method . serialize($arguments);
             if(!isset(self::$asyncInstances[$instance_key]))
             {
-                throw new Exception($this->serviceName . "->arecv_$real_method(".implode(',', $arguments).") have not been called");
+                throw new Exception($this->serviceName . "->asend_$real_method(".implode(',', $arguments).") have not been called");
             }
             return self::$asyncInstances[$instance_key]->recvData();
         }
