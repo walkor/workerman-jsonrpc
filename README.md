@@ -1,7 +1,8 @@
+# 结合workman-jsonrpc和jsonrpc打造更赛艇的JsonRPC框架
 workerman
 =========
 
-workerman 是一个高性能的PHP socket服务框架，开发者可以在这个框架下开发各种网络应用,例如Rpc服务、聊天室、游戏等。
+workerman 是一个高性能的PHP socket服务框架，开发者可以在这个框架下开发各种网络应用,例如RPC服务、聊天室、游戏等。
 workerman 具有以下特性
  * 多进程
  * 支持TCP/UDP
@@ -16,43 +17,8 @@ workerman 具有以下特性
 
  [更多请访问www.workerman.net](http://www.workerman.net/workerman-jsonrpc)
 
-所需环境
-========
 
-workerman需要PHP版本不低于5.3，只需要安装PHP的Cli即可，无需安装PHP-FPM、nginx、apache
-workerman不能运行在Window平台
-
-安装
-=========
-
-以ubuntu为例
-
-安装PHP Cli  
-`sudo apt-get install php5-cli`
-
-强烈建议安装libevent扩展，以便支持更高的并发量  
-`sudo pecl install libevent`
-
-
-启动停止
-=========
-
-启动  
-`php start.php start -d`
-
-重启启动  
-`php start.php restart`
-
-平滑重启/重新加载配置  
-`php start.php reload`
-
-查看服务状态  
-`php start.php status`
-
-停止  
-`php start.php stop`
-
-Rpc应用使用方法
+RPC应用使用方法
 =========
 
 ###客户端同步调用：
@@ -113,14 +79,14 @@ $ret_async2 = $user_client->arecv_getInfoByUid($uid);
 ```
 
 ###服务端：  
-服务端每个类提供一组服务，类文件默认放在Applications/JsonRpc/Services目录下。  
+服务端每个类提供一组服务，类文件默认放在Applications/JsonRpc/Entities目录下。  
 客户端实际上是远程调用这些类的静态方法。
 例如：
 ```php
 <?php
 RpcClient::instance('User')->getInfoByUid($uid);
 ```
-调用的是Applications/JsonRpc/Services/User.php 中 User类的getInfoByUid方法。    
+调用的是Applications/JsonRpc/Entities/User.php 中 User类的getInfoByUid方法。    
 User.php文件类似这样
 ```php
 <?php
@@ -139,7 +105,6 @@ class User
 ```
 
 如果你想要增加一组服务，可以在这个目录下增加类文件即可。
-
 
 rpc监控页面
 ======
