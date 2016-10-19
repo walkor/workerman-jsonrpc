@@ -12,7 +12,8 @@
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  */
 use Workerman\Worker;
-
+require_once __DIR__.'/../Response/ResponseParser.php';
+use JsonRPC\Response\ResponseParse;
 // 自动加载类
 require_once __DIR__ . '/../../Workerman/Autoloader.php';
 require_once __DIR__ . '/Clients/StatisticClient.php';
@@ -28,6 +29,7 @@ $worker->name = 'JsonRpc';
 $worker->onMessage = function($connection, $data)
 {
     $statistic_address = 'udp://127.0.0.1:55656';
+    $responseParser = new ResponseParser();
     // 判断数据是否正确
     if(empty($data['class']) || empty($data['method']) || !isset($data['param_array']))
     {

@@ -11,7 +11,10 @@
  * @link http://www.workerman.net/
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
+require_once __DIR__.'/../Request/RequestParser.php';
+use JsonRPC\Request\RequestParser;
+use Protocols\JsonProtocol;
+    
 if(!class_exists('JsonProtocol'))create_JsonProtocol();
 
 /**

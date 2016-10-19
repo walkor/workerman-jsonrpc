@@ -7,7 +7,7 @@ use JsonRPC\Exception\AccessDeniedException;
 use JsonRPC\Exception\AuthenticationFailureException;
 use JsonRPC\Exception\InvalidJsonRpcFormatException;
 use JsonRPC\MiddlewareHandler;
-use JsonRPC\ProcedureHandler;
+//use JsonRPC\ProcedureHandler;
 use JsonRPC\Response\ResponseBuilder;
 use JsonRPC\Validator\JsonFormatValidator;
 use JsonRPC\Validator\RpcFormatValidator;
