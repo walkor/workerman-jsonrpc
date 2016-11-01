@@ -25,13 +25,9 @@ workerman不能运行在Window平台
 安装
 =========
 
-以ubuntu为例
+1、下载 或者 git clone ```https://github.com/walkor/workerman-JsonRpc```
 
-安装PHP Cli  
-`sudo apt-get install php5-cli`
-
-强烈建议安装libevent扩展，以便支持更高的并发量  
-`sudo pecl install libevent`
+2、运行 ```composer install```
 
 
 启动停止
