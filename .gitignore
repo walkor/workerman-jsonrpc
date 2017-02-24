@@ -1,3 +1,6 @@
 .settings/org.eclipse.php.core.prefs
 .project
 .buildpath
+workerman.log
+Applications/Statistics/Config/Cache
+Applications/Statistics/data/

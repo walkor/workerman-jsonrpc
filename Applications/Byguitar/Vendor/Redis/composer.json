@@ -1,0 +1,25 @@
+{
+    "name": "Redis",
+    "description": "Redis访问组件",
+    "type": "library",
+    "authors": [{"name":"郭新华", "email": "xinhuag@jumei.com", "role": "STM"}],
+    "config":{"vendor-dir": "Vendor"},
+    "repositories":[{"packagist":false},
+        {"type": "composer",
+            "url": "https://packagist.int.jumei.com/"
+        }
+    ],
+    "scripts":{
+        "post-update-cmd":"rm -rf Vendor/composer && rm -rf Vendor/autoload.php",
+        "post-install-cmd":"rm -rf Vendor/composer && rm -rf Vendor/autoload.php"
+    },
+    "require": {
+        "php": ">=5.3.0",
+	    "MNLogger": ">=0.4.0"
+    },
+    "require-dev": {
+        "php": ">=5.3.0",
+        "Bootstrap": ">=1.0.0",
+        "MNLogger": ">=0.4.0"
+    }
+}
