@@ -48,10 +48,10 @@ $worker->onMessage = function($connection, $data)
         {
             require_once $include_file;
         }
-        if(!class_exists($class))
+        if(!class_exists($class) || !method_exists($class, $method))
         {
             $code = 404;
-            $msg = "class $class not found";
+            $msg = "class $class or method $method not found";
             StatisticClient::report($class, $method, $success, $code, $msg, $statistic_address);
             // 发送数据给客户端 类不存在
             return $connection->send(array('code'=>$code, 'msg'=>$msg, 'data'=>null));
