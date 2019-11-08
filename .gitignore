@@ -1,3 +1,5 @@
 .settings/org.eclipse.php.core.prefs
 .project
-.buildpath
+.buildpathvendor/
+composer.lock
+vendor/
