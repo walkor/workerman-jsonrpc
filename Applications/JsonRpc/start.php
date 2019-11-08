@@ -15,6 +15,7 @@ use Workerman\Worker;
 
 // 自动加载类
 require_once __DIR__ . '/Clients/StatisticClient.php';
+require_once __DIR__.'/Protocols/JsonNL.php';
 
 // 开启的端口
 $worker = new Worker('JsonNL://0.0.0.0:2015');
