@@ -52,7 +52,7 @@ workerman不能运行在Window平台
 Rpc应用使用方法
 =========
 
-###客户端同步调用：
+### 客户端同步调用：
 
 ```php
 <?php
@@ -75,7 +75,7 @@ $ret_sync = $user_client->getInfoByUid($uid);
 
 ```
 
-###客户端异步调用：
+### 客户端异步调用：
 RpcClient支持异步远程调用
 
 ```php
@@ -109,7 +109,7 @@ $ret_async2 = $user_client->arecv_getInfoByUid($uid);
 
 ```
 
-###服务端：  
+### 服务端：  
 服务端每个类提供一组服务，类文件默认放在Applications/JsonRpc/Services目录下。  
 客户端实际上是远程调用这些类的静态方法。
 例如：
